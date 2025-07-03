@@ -1,0 +1,100 @@
+.pomodoro {
+    width: 100%;
+}
+
+.pomodoro-label {
+    font-weight: bold;
+}
+
+.card-header {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.circle-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+}
+
+.circle {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    transform: rotate(-90deg);
+}
+
+.circle .bg {
+    fill: none;
+    stroke: #ffdede;
+    stroke-width: 10;
+}
+
+.circle .progress {
+    fill: none;
+    stroke:#d74177;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.pomodoro-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.pomodoro-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e85a92;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.pomodoro-buttons button:hover {
+    background-color: #d74177;
+}
+
+.session-count {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mode-buttons button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffe98a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.mode-buttons button:hover {
+  background-color: #ffd1d1;
+}
