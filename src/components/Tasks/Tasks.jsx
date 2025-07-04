@@ -2,13 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './Tasks.css'
 import { Check, Plus, RotateCcw, X } from 'lucide-react'
 
-const Tasks = () => {
+const Tasks = ({ tasks, setTasks }) => {
     const [filter, setFilter] = useState('all')
     const [modal, setModal] = useState(null)
-    const [tasks, setTasks] = useState(() => {
-        const stored = localStorage.getItem('myTasks');
-        return stored ? JSON.parse(stored) : [];
-    });
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [newTaskDesc, setNewTaskDesc] = useState('');
     const [expandedTaskId, setExpandedTaskId] = useState(null);
