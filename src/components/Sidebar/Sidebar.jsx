@@ -3,11 +3,11 @@ import './Sidebar.css'
 import Pomodoro from '../Pomodoro/Pomodoro'
 import Stats from '../Stats/Stats'
 
-const Sidebar = () => {
+const Sidebar = ({ completedFocusSessions, setCompletedFocusSessions, tasks }) => {
   return (
     <div className='sidebar'>
-        <Pomodoro/>
-        <Stats/>
+      <Pomodoro completeFocusSessions={completedFocusSessions} setCompleteFocusSessions={setCompletedFocusSessions} />
+      <Stats tasks={tasks} completeFocusSessions={completedFocusSessions} />
     </div>
   )
 }
