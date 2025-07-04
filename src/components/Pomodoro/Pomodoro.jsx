@@ -7,17 +7,27 @@ const MODES = {
   long: { label: 'Long Break', duration: 30 * 60 },
 };
 
-const Pomodoro = () => {
-  const [mode, setMode] = useState('focus');
-  const [timeLeft, setTimeLeft] = useState(MODES[mode].duration);
-  const [isRunning, setIsRunning] = useState(false);
-  const [completedFocusSessions, setCompletedFocusSessions] = useState(0);
+const Pomodoro = ({ completedFocusSessions, setCompletedFocusSessions }) => {
+  const defaultMode = 'focus';
+
+  const stored = JSON.parse(localStorage.getItem('pomodoro-state')) || {};
+  const initialMode = stored.mode || defaultMode;
+  const initialTime = typeof stored.timeLeft === 'number' ? stored.timeLeft : MODES[initialMode].duration;
+
+  const [mode, setMode] = useState(initialMode);
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [isRunning, setIsRunning] = useState(false); // always paused on reload
+
   const intervalRef = useRef(null);
+  const justLoaded = useRef(true);
 
+  // update pomodoroState when mode and timeLeft changes
   useEffect(() => {
-    setTimeLeft(MODES[mode].duration);
-  }, [mode]);
+    const newState = { mode, timeLeft };
+    localStorage.setItem('pomodoroState', JSON.stringify(newState));
+  }, [mode, timeLeft])
 
+  // timer logic
   useEffect(() => {
     if (isRunning) {
       intervalRef.current = setInterval(() => {
@@ -34,6 +44,7 @@ const Pomodoro = () => {
     return () => clearInterval(intervalRef.current);
   }, [isRunning]);
 
+  // change to next mode 
   const handleSessionEnd = () => {
     if (mode === 'focus') {
       const nextSession = completedFocusSessions + 1;
@@ -45,10 +56,13 @@ const Pomodoro = () => {
     setIsRunning(false);
   };
 
+
+  // start and pause 
   const toggleTimer = () => {
     setIsRunning(!isRunning);
   };
 
+  // reset timer
   const resetTimer = () => {
     clearInterval(intervalRef.current);
     setTimeLeft(MODES[mode].duration);
@@ -64,6 +78,7 @@ const Pomodoro = () => {
     clearInterval(intervalRef.current);
     setIsRunning(false); // pause timer when switching
     setMode(newMode);
+    setTimeLeft(MODES[newMode].duration);
   };
 
 
