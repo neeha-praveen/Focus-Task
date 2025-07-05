@@ -213,6 +213,7 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .task-card-top {
@@ -224,17 +225,23 @@
     display: flex;
     align-items: center;
     overflow-wrap: break-word;
+    overflow: hidden;
 }
 
 .task-card-right {
     display: flex;
     gap: 10px;
+    flex: 1;
+    min-width: 0;
 }
 
 .task-card-right .title-pending {
     color: #000000;
     font-weight: bold;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     align-items: center;
     line-height: 1.5rem;
 }
@@ -243,6 +250,8 @@
     color: rgb(85, 85, 85);
     font-weight: bold;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     align-items: center;
     line-height: 1.5rem;
 }
