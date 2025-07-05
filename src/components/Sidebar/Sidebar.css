@@ -7,3 +7,42 @@
     top:0;
     align-self: flex-start;
 }
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .sidebar {
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: static;
+    height: auto;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .sidebar {
+    gap: 10px;
+  }
+  
+  .pomodoro {
+    margin-bottom: 5px;
+  }
+  
+  .stats {
+    margin-bottom: 5px;
+  }
+}

@@ -390,3 +390,134 @@
     margin-right: 10px;
     height: auto;
 }
+
+@media (max-width: 768px) {
+    .no-tasks {
+        margin-top: 2px;
+    }
+
+    .tasks-header {
+        gap: 15px;
+        align-items: stretch;
+        padding-bottom: 5px;
+    }
+    
+    .header-left {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .header-left h3 {
+        font-size: 18px;
+        margin: 0;
+    }
+    
+    .header-right {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .header-right select {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 14px;
+        height: 36px;
+    }
+    
+    .reset-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .add-task-modal {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    
+    .task-card {
+        padding: 15px;
+    }
+    
+    .task-card-top {
+        gap: 10px;
+    }
+    
+    .task-card-left {
+        order: 2;
+    }
+    
+    .task-card-right {
+        order: 1;
+        margin-right: 0;
+        padding-right: 0;
+    }
+    
+    .task-card-bottom {
+        padding-left: 0;
+        margin-top: 10px;
+    }
+    
+    .task-card-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .card-actions {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+    
+    .status-indicator {
+        justify-content: center;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .tasks-header {
+        gap: 12px;
+    }
+    
+    .header-left {
+        gap: 8px;
+    }
+    
+    .header-left h3 {
+        font-size: 16px;
+    }
+    
+    .add-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .add-task-modal {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .input-title {
+        font-size: 16px;
+    }
+    
+    .description-input {
+        font-size: 14px;
+    }
+    
+    .task-card {
+        padding: 12px;
+    }
+    
+    .task-card-actions {
+        gap: 6px;
+    }
+    
+    .card-actions {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
