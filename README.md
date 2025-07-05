@@ -1,6 +1,6 @@
 # 🐝 Focus & Task
 
-A **personal task manager** designed to boost your productivity using the **Pomodoro technique**.
+A **personal task manager** designed to help you stay focused and organized using the **Pomodoro technique**.
 
 Easily track your tasks, focus sessions, and progress — all in one clean, responsive web app.
 
