@@ -10,7 +10,7 @@ const MODES = {
 const Pomodoro = ({ completedFocusSessions, setCompletedFocusSessions }) => {
   const defaultMode = 'focus';
 
-  const stored = JSON.parse(localStorage.getItem('pomodoro-state')) || {};
+  const stored = JSON.parse(localStorage.getItem('pomodoroState')) || {};
   const initialMode = stored.mode || defaultMode;
   const initialTime = typeof stored.timeLeft === 'number' ? stored.timeLeft : MODES[initialMode].duration;
 
@@ -29,23 +29,60 @@ const Pomodoro = ({ completedFocusSessions, setCompletedFocusSessions }) => {
 
   // timer logic
   useEffect(() => {
+    let interval = null;
+
     if (isRunning) {
-      intervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev === 1) {
-            clearInterval(intervalRef.current);
-            handleSessionEnd();
+      interval = setInterval(() => {
+        setTimeLeft(prevTime => {
+          if (prevTime > 1) {
+            return prevTime - 1;
+          } else {
+            clearInterval(interval); // Stop the interval
+
+            // Change mode and reset timeLeft WITHOUT starting the timer again
+            if (mode === 'focus') {
+              setMode('short');
+              setTimeLeft(MODES.short.duration);
+            } else if (mode === 'short') {
+              setMode('focus');
+              setTimeLeft(MODES.focus.duration);
+            } else if (mode === 'long') {
+              setMode('focus');
+              setTimeLeft(MODES.focus.duration);
+            }
+
+            setIsRunning(false); // stop timer after transition
             return 0;
           }
-          return prev - 1;
         });
       }, 1000);
     }
-    return () => clearInterval(intervalRef.current);
-  }, [isRunning]);
+
+    return () => clearInterval(interval);
+  }, [isRunning, mode]);
+
+
+  const formatTime = (seconds) => {
+    const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    return `${mins}:${secs}`;
+  };
+
+  useEffect(() => {
+    if (isRunning) {
+      document.title = `${formatTime(timeLeft)} - Focus Time`;
+    } else {
+      document.title = 'Focus & Task';
+    }
+  }, [timeLeft, isRunning]);
 
   // change to next mode 
   const handleSessionEnd = () => {
+    const notif = new Audio('/notification.mp3')
+    notif.play().catch(err => {
+      console.log('Autoplay blocked:', err);
+    });
+
     if (mode === 'focus') {
       const nextSession = completedFocusSessions + 1;
       setCompletedFocusSessions(nextSession);
@@ -102,7 +139,7 @@ const Pomodoro = ({ completedFocusSessions, setCompletedFocusSessions }) => {
         </div>
 
         <div className="circle-container">
-          <svg className="circle">
+          <svg className="circle desktop-only">
             <circle className="bg" r="70" cx="80" cy="80" />
             <circle
               className="progress"
