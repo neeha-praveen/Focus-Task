@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Focus-Task/static/css/main.d2923dfa.css",
+    "main.js": "/Focus-Task/static/js/main.7e5771e1.js",
+    "static/media/logo.png": "/Focus-Task/static/media/logo.7016c8a4edaed0c9f1f4.png",
+    "index.html": "/Focus-Task/index.html",
+    "main.d2923dfa.css.map": "/Focus-Task/static/css/main.d2923dfa.css.map",
+    "main.7e5771e1.js.map": "/Focus-Task/static/js/main.7e5771e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2923dfa.css",
+    "static/js/main.7e5771e1.js"
+  ]
+}
