@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
-import { CircleUserRound, X } from 'lucide-react'
+import { CircleUserRound, Lock, X } from 'lucide-react'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,11 +28,11 @@ const Navbar = () => {
   useEffect(() => {
     const creds = localStorage.getItem('credentials');
     if (creds) {
-      const parsedCreds= JSON.parse(creds);
+      const parsedCreds = JSON.parse(creds);
       setIsLoggedIn(true);
       setUsername(parsedCreds.username);
     }
-  },[])
+  }, [])
 
   return (
     <div className='navbar'>
@@ -54,16 +54,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="user-info">
-            <button className='user-logout-btn' 
-              onClick={handleLogout} 
-              onMouseEnter={()=>{setIsHovered(true)}} 
-              onMouseLeave={()=>{setIsHovered(false)}}
+            <button className='user-logout-btn'
+              onClick={handleLogout}
+              onMouseEnter={() => { setIsHovered(true) }}
+              onMouseLeave={() => { setIsHovered(false) }}
             >
-              {isHovered? (
+              {isHovered ? (
                 <span className='logout-text'>Logout</span>
-              ):(
+              ) : (
                 <div className="user-stuff">
-                  <CircleUserRound className='user-icon'/>
+                  <CircleUserRound className='user-icon' />
                   <span>{username}</span>
                 </div>
               )}
@@ -88,26 +88,33 @@ const Navbar = () => {
           </div>
           <div className="modal-body">
             <form action="" onSubmit={(e) => { e.preventDefault(); handleLogin(username, password) }}>
-              <input
-                type="text"
-                placeholder='Username'
-                className='input-username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                autoFocus
-              />
-              <input
-                type="password"
-                placeholder='Password'
-                className='input-password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                autoFocus
-              />
-              <div className="add">
-                <button type='submit' className="save-btn">ADD</button>
+              <div className="input-group">
+                <CircleUserRound/>
+                <input
+                  type="text"
+                  placeholder='Username'
+                  className='input-username'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  autoFocus={true}
+                />
+              </div>
+
+              <div className="input-group">
+                <Lock/>
+                <input
+                  type="password"
+                  placeholder='Password'
+                  className='input-password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  autoFocus
+                />
+              </div>
+              <div className="login-modal-btn-div">
+                <button type='submit' className="login-modal-btn">LOGIN</button>
               </div>
             </form>
           </div>
