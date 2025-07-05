@@ -92,6 +92,8 @@ const Navbar = () => {
                 <CircleUserRound/>
                 <input
                   type="text"
+                  id='username'
+                  name='username'
                   placeholder='Username'
                   className='input-username'
                   value={username}
@@ -105,6 +107,8 @@ const Navbar = () => {
                 <Lock/>
                 <input
                   type="password"
+                  id='password'
+                  name='password'
                   placeholder='Password'
                   className='input-password'
                   value={password}
