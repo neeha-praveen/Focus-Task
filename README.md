@@ -29,8 +29,7 @@ Easily track your tasks, focus sessions, and progress — all in one clean, resp
 
 ## 💬 Feedback
 
-Have thoughts or suggestions?  
-Feel free to [open an issue](https://github.com/neeha-praveen/Focus-Task/issues)
+Have thoughts or suggestions? Feel free to [open an issue](https://github.com/neeha-praveen/Focus-Task/issues)
 
 ---
 
