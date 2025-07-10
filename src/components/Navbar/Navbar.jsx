@@ -6,16 +6,18 @@ import { CircleUserRound, Lock, X } from 'lucide-react'
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [modal, setModal] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formUsername, setFormUsername] = useState('');
+  const [formPassword, setFormPassword] = useState('');
+  const [username, setUsername] = useState(''); // This will hold the logged-in user's name
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleLogin = (user, pass) => {
     localStorage.setItem("credentials", JSON.stringify({ username: user, password: pass }));
     setModal(false);
-    setUsername(user);
-    setPassword('');
+    setUsername(user); // Set the logged-in username
+    setFormUsername(''); // Clear the form
+    setFormPassword(''); // Clear the form
     setIsLoggedIn(true);
   }
 
@@ -23,7 +25,8 @@ const Navbar = () => {
     localStorage.removeItem('credentials');
     setIsLoggedIn(false);
     setUsername('');
-    setPassword('');
+    setFormUsername('');
+    setFormPassword('');
   }
 
   useEffect(() => {
@@ -81,14 +84,14 @@ const Navbar = () => {
               className='close-btn'
               onClick={() => {
                 setModal(false);
-                setUsername('');
-                setPassword('');
+                setFormUsername('');
+                setFormPassword('');
               }}>
               <X />
             </button>
           </div>
           <div className="modal-body">
-            <form action="" onSubmit={(e) => { e.preventDefault(); handleLogin(username, password) }}>
+            <form action="" onSubmit={(e) => { e.preventDefault(); handleLogin(formUsername, formPassword) }}>
               <div className="input-group">
                 <CircleUserRound/>
                 <input
@@ -97,8 +100,8 @@ const Navbar = () => {
                   name='username'
                   placeholder='Username'
                   className='input-username'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={formUsername}
+                  onChange={(e) => setFormUsername(e.target.value)}
                   required
                   autoFocus={true}
                 />
@@ -112,8 +115,8 @@ const Navbar = () => {
                   name='password'
                   placeholder='Password'
                   className='input-password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formPassword}
+                  onChange={(e) => setFormPassword(e.target.value)}
                   required
                   autoFocus
                 />
