@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Focus-Task/static/css/main.6677a9a8.css",
-    "main.js": "/Focus-Task/static/js/main.dede3012.js",
+    "main.js": "/Focus-Task/static/js/main.31ed6a59.js",
     "static/media/logo.png": "/Focus-Task/static/media/logo.7016c8a4edaed0c9f1f4.png",
     "index.html": "/Focus-Task/index.html",
     "main.6677a9a8.css.map": "/Focus-Task/static/css/main.6677a9a8.css.map",
-    "main.dede3012.js.map": "/Focus-Task/static/js/main.dede3012.js.map"
+    "main.31ed6a59.js.map": "/Focus-Task/static/js/main.31ed6a59.js.map"
   },
   "entrypoints": [
     "static/css/main.6677a9a8.css",
-    "static/js/main.dede3012.js"
+    "static/js/main.31ed6a59.js"
   ]
 }
