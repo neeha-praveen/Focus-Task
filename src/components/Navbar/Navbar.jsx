@@ -16,6 +16,7 @@ const Navbar = () => {
     setModal(false);
     setUsername(user);
     setPassword('');
+    setIsLoggedIn(true);
   }
 
   const handleLogout = () => {
